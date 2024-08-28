@@ -1,0 +1,166 @@
+/* Global styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+  }
+
+  :root {
+    --primary-color: #c0b93d;
+    --secondary-color: #d8e9a8;
+    --background-color: #fafafa;
+    --text-color: #333;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --input-focus-color: #a4b494;
+  }
+
+  body {
+    background: url("../images/cover_img.png") no-repeat center
+      center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 60px;
+    min-height: 100vh;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  #passwordStrength {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px var(--box-shadow-color);
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav li {
+    margin: 0 15px;
+  }
+
+  nav a,
+  nav button {
+    color: var(--primary-color);
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  nav a:hover,
+  nav button:hover {
+    color: var(--secondary-color);
+  }
+
+  main {
+    background-color: white;
+    box-shadow: 0 8px 10px var(--box-shadow-color);
+    border-radius: 8px;
+    padding: 40px;
+    width: 50%;
+  }
+
+  h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: 600;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border 0.3s;
+  }
+
+  input:focus {
+    border-color: var(--input-focus-color);
+    box-shadow: 0 0 8px rgba(164, 179, 148, 0.5);
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .button-group button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .button-group button:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  p a {
+    text-decoration: none;
+    color: var(--primary-color);
+  }
+
+  p a:hover {
+    color: var(--secondary-color);
+  }
+
+  #accountAddress {
+    margin-top: 20px;
+  }
+
+  #seedPhraseDisplay {
+    margin-top: 20px;
+    font-weight: bold;
+    color: var(--primary-color);
+  }

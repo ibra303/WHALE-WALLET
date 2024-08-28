@@ -1,0 +1,149 @@
+/* style for login page */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  :root {
+    --primary-color: #c0b93d;
+    --secondary-color: #d8e9a8;
+    --background-color: #fafafa;
+    --text-color: #333;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --input-focus-color: #a4b494;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url("../images/cover_img.png");
+    background-repeat: no-repeat;
+    background-position: left; 
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding-top: 60px;
+    justify-content: left; 
+    padding: 20px;
+  }
+  
+  .chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 57vh;
+    width: 35vh; /* Center vertically if desired */
+  }
+  #tradingview_btc {
+    width: 900px; /* Fixed width */
+    height: 500px; /* Fixed height */
+  } 
+  
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px var(--box-shadow-color);
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav li {
+    margin: 0 15px;
+  }
+  
+  nav a,
+  nav button {
+    color: var(--primary-color);
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  nav a:hover,
+  nav button:hover {
+    color: var(--secondary-color);
+  }
+  
+  main {
+    background-color: white;
+    box-shadow: 0 8px 10px var(--box-shadow-color);
+    border-radius: 6px;
+    padding: 40px;
+    width: 40%;
+    max-width: 400px;
+    min-width: 300px;
+    max-height: 435px;
+    min-height: 330px;
+  }
+  
+  h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: 600;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border 0.3s;
+  }
+  
+  input:focus {
+    border-color: var(--input-focus-color);
+    box-shadow: 0 0 8px rgba(164, 179, 148, 0.5);
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  p a {
+    text-decoration: none;
+    color: var(--primary-color);
+  }
+  
+  p a:hover {
+    color: var(--secondary-color);
+  }
+  
