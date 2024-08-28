@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whale Wallet - Send Coins</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/SendCoinsStyle.css" />
+    <link rel="icon" href="../images/whale.png" type="image/png">
+  </head>
+
+  <body onload="loginStatus() ">
+    <nav>
+      <ul class="navbar">
+        <li><p id="loginStatus"></p></li>
+        <li><a href="Profile.html">Home</a></li>
+        <li><a href="SendCoins.html">Send Coins</a></li>
+        <li><a href="TransactionHistory.html">Wallet Transaction History</a></li>
+        <li><a href="CreateWallet.html">Create Wallet</a></li>
+        <li><a href="RestoreAccount.html">Restore Wallet</a></li>
+        <li><button onclick="logOut()">Log Out</button></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Send Coins</h1>
+      <p id="walletAddress" hidden></p>
+      <p id="walletBalance" hidden></p>
+      <p id="walletBalanceAvax" hidden></p>
+      <form id="transactionForm" onsubmit="sendCoins(event)">
+        <label for="recipient">Recipient's Wallet ID:</label>
+        <input type="text" id="recipient" required />
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" step="any" required />
+        <label for="coin">Coin:</label>
+        <select id="coin" required>
+          <option value="ETH">Ethereum (ETH)</option>
+          <option value="AVAX">Avalanche (AVAX)</option>
+        </select>
+        <button type="submit">Send Coins</button>
+      </form>
+      <div id="transactionResult"></div>
+      <div id="transactionStatus" class="status-box"></div>
+
+    </main>
+
+    <script src="../JS/lightwallet.min.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.x.x/dist/ethers.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.5.2/dist/web3.min.js"></script>
+    <script src="../JS/CurrenciesFunctionality.js"></script>
+    <script src="../JS/WalletFunctionality.js"></script>
+  </body>
+</html>

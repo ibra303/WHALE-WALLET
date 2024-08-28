@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whale Wallet - Restore Wallet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/RestoreAccountStyle.css">
+    <link rel="icon" href="../images/whale.png" type="image/png">
+  </head>
+
+  <body onload="logOut();">
+    <main>
+      <h1>Restore Account</h1>
+      <form
+        id="restoreAccountForm"
+        onsubmit="event.preventDefault(); restoreAccountHTML();"
+      >
+        <div class="form-group">
+          <label for="seedPhrase">Seed Phrase</label>
+          <div id="seedPhrase">
+            <input
+              type="text"
+              id="word1"
+              name="word1"
+              placeholder="Word 1"
+              required
+            />
+            <input
+              type="text"
+              id="word2"
+              name="word2"
+              placeholder="Word 2"
+              required
+            />
+            <input
+              type="text"
+              id="word3"
+              name="word3"
+              placeholder="Word 3"
+              required
+            />
+            <input
+              type="text"
+              id="word4"
+              name="word4"
+              placeholder="Word 4"
+              required
+            />
+            <input
+              type="text"
+              id="word5"
+              name="word5"
+              placeholder="Word 5"
+              required
+            />
+            <input
+              type="text"
+              id="word6"
+              name="word6"
+              placeholder="Word 6"
+              required
+            />
+            <input
+              type="text"
+              id="word7"
+              name="word7"
+              placeholder="Word 7"
+              required
+            />
+            <input
+              type="text"
+              id="word8"
+              name="word8"
+              placeholder="Word 8"
+              required
+            />
+            <input
+              type="text"
+              id="word9"
+              name="word9"
+              placeholder="Word 9"
+              required
+            />
+            <input
+              type="text"
+              id="word10"
+              name="word10"
+              placeholder="Word 10"
+              required
+            />
+            <input
+              type="text"
+              id="word11"
+              name="word11"
+              placeholder="Word 11"
+              required
+            />
+            <input
+              type="text"
+              id="word12"
+              name="word12"
+              placeholder="Word 12"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="newPassword">New Password</label>
+          <input type="password" id="newPassword" name="newPassword" required />
+          <div id="passwordStrength"></div>
+        </div>
+        <div id="errorMsg"></div>
+        <button type="submit">Restore Wallet</button>
+      </form>
+    </main>
+    <script src="../JS/lightwallet.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.5.2/dist/web3.min.js"></script>
+    <script src="../JS/CurrenciesFunctionality.js"></script>
+    <script src="../JS/WalletFunctionality.js"></script>
+    <script>
+      function restoreAccountHTML() {
+        // Get seed phrase from inputs
+        let seedPhrase = "";
+        for (let i = 1; i <= 12; i++) {
+          seedPhrase += document.getElementById("word" + i).value + " ";
+        }
+        seedPhrase = seedPhrase.trim();
+
+        var message = restoreAccount(seedPhrase);
+
+        // Display the returned message
+        document.getElementById("errorMsg").innerText = message;
+      }
+    </script>
+    <script>
+      document.getElementById('newPassword').addEventListener('input', function() {
+          const password = this.value;
+          const strengthElement = document.getElementById('passwordStrength');
+
+          let strength = getPasswordStrength(password);
+
+          strengthElement.textContent = `Password strength: ${strength}`;
+          strengthElement.style.color = getStrengthColor(strength);
+      });
+
+      function getPasswordStrength(password) {
+          let strength = 'Weak';
+          const regexes = [
+              /[a-z]/,      // Lowercase letters
+              /[A-Z]/,      // Uppercase letters
+              /[0-9]/,      // Numbers
+              /[!@#$%^&*(),.?":{}|<>]/  // Special characters
+          ];
+
+          let passedTests = 0;
+          regexes.forEach((regex) => {
+              if (regex.test(password)) {
+                  passedTests++;
+              }
+          });
+
+          if (password.length >= 8 && passedTests >= 3) {
+              strength = 'Medium';
+          }
+
+          if (password.length >= 12 && passedTests === 4) {
+              strength = 'Strong';
+          }
+
+          return strength;
+      }
+
+      function getStrengthColor(strength) {
+          switch (strength) {
+              case 'Weak':
+                  return 'red';
+              case 'Medium':
+                  return 'orange';
+              case 'Strong':
+                  return 'green';
+              default:
+                  return 'black';
+          }
+      }
+  </script>
+  </body>
+</html>

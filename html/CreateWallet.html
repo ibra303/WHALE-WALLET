@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whale Wallet - Create Wallet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/CreateWalletStyle.css">
+    <link rel="icon" href="../images/whale.png" type="image/png">
+  </head>
+
+  <body>
+    <main>
+      <h1>Create a New Wallet</h1>
+      <div id="usernameDisplay"></div>
+      <form id="createAccountForm">
+        <label for="username">Username</label>
+        <input type="text" id="username" required />
+        <label for="password">Password</label>
+        <input type="password" id="password" required />
+        <div id="passwordStrength"></div>
+        <button type="submit">Create Wallet</button>
+        <p>Already Signed Up? <a href="Login.html">Sign In</a></p>
+      </form>
+
+      <div class="button-group">
+        <button onclick="goToHome()">Open Wallet</button>
+      </div>
+      <div id="accountAddress"></div>
+      <div id="seedPhraseDisplay"></div>
+    </main>
+    <script src="../JS/lightwallet.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.5.2/dist/web3.min.js"></script>
+    <script src="../JS/CurrenciesFunctionality.js"></script>
+    <script src="../JS/WalletFunctionality.js"></script>
+
+    <script>
+      function goToHome() {
+        window.location.href = "Profile.html";
+      }
+    </script>
+    <script>
+      window.onload = function () {
+        var allUsers = JSON.parse(localStorage.getItem("userData")) || [];
+
+        var loggedInUser = allUsers.find((user) => user.isLoggedIn);
+        if (loggedInUser) {
+          loggedInUser.isLoggedIn = false;
+        }
+
+        localStorage.setItem("userData", JSON.stringify(allUsers));
+      };
+    </script>
+    <script>
+      document.getElementById('password').addEventListener('input', function() {
+          const password = this.value;
+          const strengthElement = document.getElementById('passwordStrength');
+
+          let strength = getPasswordStrength(password);
+
+          strengthElement.textContent = `Password strength: ${strength}`;
+          strengthElement.style.color = getStrengthColor(strength);
+      });
+
+      function getPasswordStrength(password) {
+          let strength = 'Weak';
+          const regexes = [
+              /[a-z]/,      // Lowercase letters
+              /[A-Z]/,      // Uppercase letters
+              /[0-9]/,      // Numbers
+              /[!@#$%^&*(),.?":{}|<>]/  // Special characters
+          ];
+
+          let passedTests = 0;
+          regexes.forEach((regex) => {
+              if (regex.test(password)) {
+                  passedTests++;
+              }
+          });
+
+          if (password.length >= 8 && passedTests >= 3) {
+              strength = 'Medium';
+          }
+
+          if (password.length >= 12 && passedTests === 4) {
+              strength = 'Strong';
+          }
+
+          return strength;
+      }
+
+      function getStrengthColor(strength) {
+          switch (strength) {
+              case 'Weak':
+                  return 'red';
+              case 'Medium':
+                  return 'orange';
+              case 'Strong':
+                  return 'green';
+              default:
+                  return 'black';
+          }
+      }
+  </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whale Wallet - Wallet Transaction History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/TransactionHistoryStyle.css">
+    <link rel="icon" href="../images/whale.png" type="image/png">
+  </head>
+
+  <body onload="checkLoginStatus(); fetchTransactions(); ">
+    <nav>
+      <ul class="navbar">
+        <li><p id="loginStatus"></p></li>
+        <li><a href="Profile.html">Home</a></li>
+        <li><a href="SendCoins.html">Send Coins</a></li>
+        <li><a href="TransactionHistory.html">Wallet Transaction History</a></li>
+        <li><a href="CreateWallet.html">Create Wallet</a></li>
+        <li><a href="RestoreAccount.html">Restore Wallet</a></li>
+        <li><button onclick="logOut()">Log Out</button></li>
+      </ul>
+    </nav>
+    <p id="loginStatus"></p>
+    <main>
+      <div id="loggedInStatus"></div>
+      <h1>Wallet Transaction History</h1>
+      <p id="walletAddress" hidden></p>
+      <p id="walletBalance" hidden></p>
+
+      <div class="transaction-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Transaction Details</th>
+              <th>Amount</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody id="transactionList">
+            <!-- Transactions will be inserted here by the JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <script src="../JS/lightwallet.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.5.2/dist/web3.min.js"></script>
+    <script src="../JS/CurrenciesFunctionality.js"></script>
+    <script src="../JS/WalletFunctionality.js"></script>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+    <script>
+      window.onload = function () {
+        fetchTransactions();
+        var username = localStorage.getItem("username");
+        if (username) {
+          document.getElementById("loginStatus").innerText = "";
+          document.getElementById("loggedInStatus").innerText =
+            "Logged in as: " + username;
+        }
+      };
+    </script>
+  </body>
+</html>
